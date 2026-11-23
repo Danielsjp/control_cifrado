@@ -25,18 +25,26 @@
         border-radius: 8px;
         margin-bottom: 15px;
         border: 1px solid #2b3553;
+        transition: border-color 0.3s ease;
     }
     .question h3 {
         margin-top: 0;
     }
     .options label {
         display: block;
-        margin-bottom: 5px;
+        margin-bottom: 8px;
         cursor: pointer;
+        padding: 6px 10px;
+        border-radius: 5px;
+        transition: background 0.2s;
     }
-    .result {
-        margin-top: 8px;
+    .options label:hover {
+        background: #262f4d;
+    }
+    .feedback {
+        margin-top: 10px;
         font-weight: bold;
+        font-size: 14px;
     }
     .ok {
         color: #4ade80;
@@ -61,9 +69,9 @@
         font-size: 18px;
         font-weight: bold;
         color: #facc15;
+        margin-top: 18px;
     }
     button:disabled { opacity: .6; cursor: not-allowed; }
-    #score { margin-top: 18px; }
 </style>
 </head>
 
@@ -80,7 +88,7 @@
   <input id="studentName" name="studentName" type="text" required
          autocomplete="name" maxlength="120"
          style="display:block;width:100%;box-sizing:border-box;padding:12px;margin-top:8px;border-radius:6px;border:1px solid #526080;background:#11182b;color:#fff;font-size:16px;">
-  <p style="color:#cbd5e1;font-size:14px;margin-bottom:0;">Al enviar el examen verás únicamente tu nota final.</p>
+  <p style="color:#cbd5e1;font-size:14px;margin-bottom:0;">Cada pregunta se corregirá al momento. Si fallas, podrás volver a intentarlo hasta dar con la correcta.</p>
 </div>
 
 
@@ -99,6 +107,7 @@
 <label><input type="radio" name="q1"> Que los datos ocupen poco espacio.</label>
 <label><input type="radio" name="q1"> Que los datos puedan compartirse libremente.</label>
 </div>
+<div class="feedback" id="fb-q1"></div>
 </div>
 
 <!-- 2 -->
@@ -110,6 +119,7 @@
 <label><input type="radio" name="q2"> Usa la misma clave para cifrar y descifrar.</label>
 <label><input type="radio" name="q2"> Solo sirve para firmas digitales.</label>
 </div>
+<div class="feedback" id="fb-q2"></div>
 </div>
 
 <!-- 3 -->
@@ -121,6 +131,7 @@
 <label><input type="radio" name="q3"> Solo cifra imágenes.</label>
 <label><input type="radio" name="q3"> Es más rápido que el simétrico.</label>
 </div>
+<div class="feedback" id="fb-q3"></div>
 </div>
 
 <!-- 4 -->
@@ -132,6 +143,7 @@
 <label><input type="radio" name="q4"> Cifra datos en bloques de tamaño fijo.</label>
 <label><input type="radio" name="q4"> Solo sirve para audio.</label>
 </div>
+<div class="feedback" id="fb-q4"></div>
 </div>
 
 <!-- 5 -->
@@ -143,6 +155,7 @@
 <label><input type="radio" name="q5"> No usa claves.</label>
 <label><input type="radio" name="q5"> Es un algoritmo de hashing.</label>
 </div>
+<div class="feedback" id="fb-q5"></div>
 </div>
 
 <!-- 6 -->
@@ -154,6 +167,7 @@
 <label><input type="radio" name="q6"> Es un algoritmo asimétrico.</label>
 <label><input type="radio" name="q6"> No utiliza claves.</label>
 </div>
+<div class="feedback" id="fb-q6"></div>
 </div>
 
 <!-- 7 -->
@@ -165,6 +179,7 @@
 <label><input type="radio" name="q7"> Una versión de DES que aplica el algoritmo tres veces.</label>
 <label><input type="radio" name="q7"> Un protocolo de red.</label>
 </div>
+<div class="feedback" id="fb-q7"></div>
 </div>
 
 <!-- 8 -->
@@ -176,6 +191,7 @@
 <label><input type="radio" name="q8"> Un protocolo de correo.</label>
 <label><input type="radio" name="q8"> Un método de esteganografía.</label>
 </div>
+<div class="feedback" id="fb-q8"></div>
 </div>
 
 <!-- 9 -->
@@ -187,6 +203,7 @@
 <label><input type="radio" name="q9"> Un cifrado simétrico optimizado para software.</label>
 <label><input type="radio" name="q9"> Un certificado digital.</label>
 </div>
+<div class="feedback" id="fb-q9"></div>
 </div>
 
 <!-- 10 -->
@@ -198,6 +215,7 @@
 <label><input type="radio" name="q10"> Un protocolo de correo.</label>
 <label><input type="radio" name="q10"> Un método de salting.</label>
 </div>
+<div class="feedback" id="fb-q10"></div>
 </div>
 
 <!-- 11 -->
@@ -209,6 +227,7 @@
 <label><input type="radio" name="q11"> Para comprimir tráfico.</label>
 <label><input type="radio" name="q11"> Para generar hashes.</label>
 </div>
+<div class="feedback" id="fb-q11"></div>
 </div>
 
 <!-- 12 -->
@@ -220,6 +239,7 @@
 <label><input type="radio" name="q12"> Cifra comunicaciones como HTTPS.</label>
 <label><input type="radio" name="q12"> Es un algoritmo de hashing.</label>
 </div>
+<div class="feedback" id="fb-q12"></div>
 </div>
 
 <!-- 13 -->
@@ -231,6 +251,7 @@
 <label><input type="radio" name="q13"> Para crear certificados raíz.</label>
 <label><input type="radio" name="q13"> Para ocultar datos en imágenes.</label>
 </div>
+<div class="feedback" id="fb-q13"></div>
 </div>
 
 <!-- 14 -->
@@ -242,6 +263,7 @@
 <label><input type="radio" name="q14"> Un sistema de cifrado para correos y archivos.</label>
 <label><input type="radio" name="q14"> Un tipo de tabla arcoiris.</label>
 </div>
+<div class="feedback" id="fb-q14"></div>
 </div>
 
 <!-- 15 -->
@@ -253,6 +275,7 @@
 <label><input type="radio" name="q15"> Para acordar una clave compartida sin comunicarse previamente.</label>
 <label><input type="radio" name="q15"> Para crear tablas arcoiris.</label>
 </div>
+<div class="feedback" id="fb-q15"></div>
 </div>
 
 <!-- ============================
@@ -270,6 +293,7 @@
 <label><input type="radio" name="q16"> Un algoritmo de hashing.</label>
 <label><input type="radio" name="q16"> Un protocolo de red.</label>
 </div>
+<div class="feedback" id="fb-q16"></div>
 </div>
 
 <!-- 17 -->
@@ -281,6 +305,7 @@
 <label><input type="radio" name="q17"> Ocultar datos dentro de otro archivo.</label>
 <label><input type="radio" name="q17"> Un certificado digital.</label>
 </div>
+<div class="feedback" id="fb-q17"></div>
 </div>
 
 <!-- 18 -->
@@ -292,6 +317,7 @@
 <label><input type="radio" name="q18"> La clave pública usada para ocultar datos.</label>
 <label><input type="radio" name="q18"> Un algoritmo de hashing.</label>
 </div>
+<div class="feedback" id="fb-q18"></div>
 </div>
 
 <!-- ============================
@@ -309,6 +335,7 @@
 <label><input type="radio" name="q19"> Que los datos no han sido modificados.</label>
 <label><input type="radio" name="q19"> Que los datos se puedan compartir.</label>
 </div>
+<div class="feedback" id="fb-q19"></div>
 </div>
 
 <!-- 20 -->
@@ -320,6 +347,7 @@
 <label><input type="radio" name="q20"> Un certificado digital.</label>
 <label><input type="radio" name="q20"> Un protocolo de red.</label>
 </div>
+<div class="feedback" id="fb-q20"></div>
 </div>
 
 <!-- 21 -->
@@ -331,6 +359,7 @@
 <label><input type="radio" name="q21"> Una clave secreta para verificar autenticidad.</label>
 <label><input type="radio" name="q21"> Un canal de voz.</label>
 </div>
+<div class="feedback" id="fb-q21"></div>
 </div>
 
 <!-- 22 -->
@@ -342,6 +371,7 @@
 <label><input type="radio" name="q22"> Un algoritmo de cifrado.</label>
 <label><input type="radio" name="q22"> Un protocolo de autenticación.</label>
 </div>
+<div class="feedback" id="fb-q22"></div>
 </div>
 
 <!-- 23 -->
@@ -353,6 +383,7 @@
 <label><input type="radio" name="q23"> Tablas optimizadas para romper hashes.</label>
 <label><input type="radio" name="q23"> Un protocolo de VPN.</label>
 </div>
+<div class="feedback" id="fb-q23"></div>
 </div>
 
 <!-- ============================
@@ -370,6 +401,7 @@
 <label><input type="radio" name="q24"> Un mecanismo para verificar autenticidad e integridad.</label>
 <label><input type="radio" name="q24"> Un protocolo de red.</label>
 </div>
+<div class="feedback" id="fb-q24"></div>
 </div>
 
 <!-- 25 -->
@@ -381,8 +413,10 @@
 <label><input type="radio" name="q25"> Un documento que vincula una clave pública con una identidad.</label>
 <label><input type="radio" name="q25"> Un método de esteganografía.</label>
 </div>
+<div class="feedback" id="fb-q25"></div>
 </div>
 
+<!-- 26 -->
 <div class="question">
 <h3>26. ¿Qué es RSA?</h3>
 <div class="options">
@@ -391,6 +425,7 @@
 <label><input type="radio" name="q26"> Un protocolo de túneles VPN.</label>
 <label><input type="radio" name="q26"> Un algoritmo asimétrico basado en la factorización de números grandes.</label>
 </div>
+<div class="feedback" id="fb-q26"></div>
 </div>
 
 <!-- 27 -->
@@ -402,6 +437,7 @@
 <label><input type="radio" name="q27"> Un protocolo de correo seguro.</label>
 <label><input type="radio" name="q27"> Un método de salting.</label>
 </div>
+<div class="feedback" id="fb-q27"></div>
 </div>
 
 <!-- 28 -->
@@ -413,6 +449,7 @@
 <label><input type="radio" name="q28"> Un algoritmo asimétrico basado en Diffie-Hellman.</label>
 <label><input type="radio" name="q28"> Un protocolo de autenticación.</label>
 </div>
+<div class="feedback" id="fb-q28"></div>
 </div>
 
 <!-- 29 -->
@@ -424,6 +461,7 @@
 <label><input type="radio" name="q29"> Eliminan la necesidad de claves privadas.</label>
 <label><input type="radio" name="q29"> Solo sirven para esteganografía.</label>
 </div>
+<div class="feedback" id="fb-q29"></div>
 </div>
 
 <!-- 30 -->
@@ -435,6 +473,7 @@
 <label><input type="radio" name="q30"> Que el mensaje no ocupa espacio.</label>
 <label><input type="radio" name="q30"> Que el mensaje se envió por VPN.</label>
 </div>
+<div class="feedback" id="fb-q30"></div>
 </div>
 
 <!-- 31 -->
@@ -446,6 +485,7 @@
 <label><input type="radio" name="q31"> Que el remitente no pueda negar haber enviado un mensaje.</label>
 <label><input type="radio" name="q31"> Que el mensaje sea anónimo.</label>
 </div>
+<div class="feedback" id="fb-q31"></div>
 </div>
 
 <!-- 32 -->
@@ -457,6 +497,7 @@
 <label><input type="radio" name="q32"> Una infraestructura para gestionar certificados y claves públicas.</label>
 <label><input type="radio" name="q32"> Un método de esteganografía.</label>
 </div>
+<div class="feedback" id="fb-q32"></div>
 </div>
 
 <!-- 33 -->
@@ -468,6 +509,7 @@
 <label><input type="radio" name="q33"> Una entidad que emite y valida certificados digitales.</label>
 <label><input type="radio" name="q33"> Un sistema de esteganografía.</label>
 </div>
+<div class="feedback" id="fb-q33"></div>
 </div>
 
 <!-- 34 -->
@@ -479,6 +521,7 @@
 <label><input type="radio" name="q34"> Que se eliminan las claves públicas.</label>
 <label><input type="radio" name="q34"> Que se usa hashing en lugar de certificados.</label>
 </div>
+<div class="feedback" id="fb-q34"></div>
 </div>
 
 <!-- 35 -->
@@ -490,6 +533,7 @@
 <label><input type="radio" name="q35"> Una lista de certificados revocados.</label>
 <label><input type="radio" name="q35"> Un método de esteganografía.</label>
 </div>
+<div class="feedback" id="fb-q35"></div>
 </div>
 
 <!-- 36 -->
@@ -501,6 +545,7 @@
 <label><input type="radio" name="q36"> Para consultar en tiempo real el estado de un certificado.</label>
 <label><input type="radio" name="q36"> Para crear tablas arcoiris.</label>
 </div>
+<div class="feedback" id="fb-q36"></div>
 </div>
 
 <!-- ============================
@@ -518,6 +563,7 @@
 <label><input type="radio" name="q37"> Elimina la necesidad de firewalls.</label>
 <label><input type="radio" name="q37"> Permite descifrar tráfico automáticamente.</label>
 </div>
+<div class="feedback" id="fb-q37"></div>
 </div>
 
 <!-- 38 -->
@@ -529,6 +575,7 @@
 <label><input type="radio" name="q38"> Para autenticar usuarios, dispositivos y servicios.</label>
 <label><input type="radio" name="q38"> Para generar hashes de contraseñas.</label>
 </div>
+<div class="feedback" id="fb-q38"></div>
 </div>
 
 <!-- ============================
@@ -537,7 +584,7 @@
 
 <div style="text-align:center; margin-top:30px;">
     <button id="submitButton" type="button" onclick="enviarExamen()">Enviar examen</button>
-    <button type="button" onclick="reiniciar()">Reiniciar</button>
+    <button id="resetButton" type="button" onclick="reiniciar()">Reiniciar</button>
     <div id="score" role="status" aria-live="polite"></div>
 </div>
 
@@ -550,46 +597,105 @@
 
 
 <script>
-// Pega aquí la URL de implementación de tu aplicación web de Google Apps Script.
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzZwh4g-DxCkjv6sdCKejHoNYTxFdiDKrEkF8Rl6NoOWJGwgxf1ypcW7WYso-k_wgMV/exec";
 
+const CLAVE_RESPUESTAS = {
+    q1: 1,  q2: 2,  q3: 1,  q4: 2,  q5: 0,  q6: 1,  q7: 2,  q8: 1,  q9: 2,  q10: 1,
+    q11: 1, q12: 2, q13: 1, q14: 2, q15: 2, q16: 1, q17: 2, q18: 1, q19: 2, q20: 1,
+    q21: 2, q22: 1, q23: 2, q24: 2, q25: 2, q26: 3, q27: 1, q28: 2, q29: 1, q30: 1,
+    q31: 2, q32: 2, q33: 2, q34: 1, q35: 2, q36: 2, q37: 1, q38: 2
+};
+
 let envioEnCurso = false;
+let examenEnviado = false;
+
+// Delegación directa sobre el formulario: no depende de DOMContentLoaded
+document.getElementById("quizForm").addEventListener("change", function(e) {
+    if (examenEnviado) return;
+    if (!e.target || e.target.type !== "radio") return;
+
+    const radio = e.target;
+    const qName = radio.name;
+    const radios = Array.from(document.querySelectorAll('input[name="' + qName + '"]'));
+    const index = radios.indexOf(radio);
+    const correctaIdx = CLAVE_RESPUESTAS[qName];
+    const feedbackDiv = document.getElementById("fb-" + qName);
+    const questionCard = radio.closest(".question");
+
+    // Limpiar estilos previos de esa pregunta
+    radios.forEach(function(r) {
+        r.parentElement.style.background = "";
+    });
+
+    if (index === correctaIdx) {
+        feedbackDiv.textContent = "✔ ¡Correcto!";
+        feedbackDiv.className = "feedback ok";
+        questionCard.style.borderColor = "#4ade80";
+        radio.parentElement.style.background = "rgba(74, 222, 128, 0.15)";
+    } else {
+        feedbackDiv.textContent = "✘ Incorrecto. Inténtalo de nuevo.";
+        feedbackDiv.className = "feedback bad";
+        questionCard.style.borderColor = "#fb7185";
+        radio.parentElement.style.background = "rgba(251, 113, 133, 0.15)";
+    }
+
+    actualizarMarcadorParcial();
+});
+
+function actualizarMarcadorParcial() {
+    if (examenEnviado) return;
+    let aciertos = 0;
+    let respondidas = 0;
+
+    for (let i = 1; i <= 38; i++) {
+        const qName = "q" + i;
+        const radios = Array.from(document.querySelectorAll('input[name="' + qName + '"]'));
+        const seleccionada = radios.find(function(r) { return r.checked; });
+        if (seleccionada) {
+            respondidas++;
+            if (radios.indexOf(seleccionada) === CLAVE_RESPUESTAS[qName]) {
+                aciertos++;
+            }
+        }
+    }
+
+    const score = document.getElementById("score");
+    score.className = "";
+    score.textContent = "Progreso: " + respondidas + "/38 respondidas | Aciertos actuales: " + aciertos;
+}
 
 function obtenerRespuestas() {
     const respuestas = {};
     for (let i = 1; i <= 38; i++) {
-        const radios = [...document.querySelectorAll('input[name="q' + i + '"]')];
-        const seleccionada = radios.find(r => r.checked);
+        const radios = Array.from(document.querySelectorAll('input[name="q' + i + '"]'));
+        const seleccionada = radios.find(function(r) { return r.checked; });
         respuestas["q" + i] = seleccionada ? String(radios.indexOf(seleccionada)) : "";
     }
     return respuestas;
 }
 
 function enviarExamen() {
-    if (envioEnCurso) return;
+    if (envioEnCurso || examenEnviado) return;
 
     const nombre = document.getElementById("studentName").value.trim();
     const score = document.getElementById("score");
 
     if (!nombre) {
         score.textContent = "Introduce tu nombre y apellidos antes de enviar.";
+        score.className = "bad";
         document.getElementById("studentName").focus();
         return;
     }
 
     const respuestas = obtenerRespuestas();
-    const sinResponder = Object.keys(respuestas).find(k => respuestas[k] === "");
+    const sinResponder = Object.keys(respuestas).find(function(k) { return respuestas[k] === ""; });
     if (sinResponder) {
         score.textContent = "Te falta responder la pregunta " + sinResponder.substring(1) + ".";
+        score.className = "bad";
         const primera = document.querySelector('input[name="' + sinResponder + '"]');
         if (primera) {
             primera.closest(".question").scrollIntoView({behavior: "smooth", block: "center"});
         }
-        return;
-    }
-
-    if (APPS_SCRIPT_URL === "PEGA_AQUI_LA_URL_DE_IMPLEMENTACION") {
-        score.textContent = "Falta configurar la URL de Google Apps Script. Consulta las instrucciones de instalación.";
         return;
     }
 
@@ -603,6 +709,7 @@ function enviarExamen() {
     const button = document.getElementById("submitButton");
     button.disabled = true;
     button.textContent = "Enviando...";
+    score.className = "";
     score.textContent = "Enviando el examen. No cierres esta página.";
 
     const submitForm = document.getElementById("submitForm");
@@ -611,7 +718,6 @@ function enviarExamen() {
     submitForm.submit();
 }
 
-// El servidor devuelve la nota mediante postMessage. No se recibe ni se muestra la plantilla de respuestas.
 window.addEventListener("message", function(event) {
     const data = event.data;
     if (!data || data.type !== "quizResult") return;
@@ -619,30 +725,42 @@ window.addEventListener("message", function(event) {
     const score = document.getElementById("score");
     const button = document.getElementById("submitButton");
     envioEnCurso = false;
-    button.disabled = false;
-    button.textContent = "Enviar examen";
 
     if (data.ok) {
-        score.textContent = "Examen enviado correctamente. Tu nota: " + data.grade + " / 100";
+        examenEnviado = true;
+        score.textContent = "Examen enviado correctamente. Tu nota oficial: " + data.grade + " / 100";
         score.className = "ok";
-        // Bloquea cambios y reenvíos desde esta sesión tras la entrega aceptada.
-        document.querySelectorAll('#quizForm input').forEach(input => input.disabled = true);
+        document.querySelectorAll('#quizForm input').forEach(function(input) { input.disabled = true; });
         button.disabled = true;
         button.textContent = "Examen enviado";
+        document.getElementById("resetButton").disabled = true;
     } else {
+        button.disabled = false;
+        button.textContent = "Enviar examen";
         score.textContent = data.message || "No se ha podido registrar el examen. Inténtalo de nuevo.";
         score.className = "bad";
     }
 });
 
 function reiniciar() {
-    if (envioEnCurso) return;
+    if (envioEnCurso || examenEnviado) return;
     document.getElementById("quizForm").reset();
     document.getElementById("score").textContent = "";
     document.getElementById("score").className = "";
+
+    document.querySelectorAll('#quizForm input[type="radio"]').forEach(function(input) {
+        input.disabled = false;
+        input.parentElement.style.background = "";
+    });
+    document.querySelectorAll('.feedback').forEach(function(fb) {
+        fb.textContent = "";
+        fb.className = "feedback";
+    });
+    document.querySelectorAll('.question').forEach(function(q) {
+        q.style.borderColor = "#2b3553";
+    });
 }
 </script>
-
 
 </body>
 </html>
