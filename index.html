@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Quiz Criptografía - Módulo 8</title>
+
+<style>
+    body {
+        background: #0b1020;
+        color: #f5f5f5;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    h1, h2 {
+        text-align: center;
+    }
+    .container {
+        max-width: 1100px;
+        margin: auto;
+    }
+    .question {
+        background: #1d2338;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #2b3553;
+    }
+    .question h3 {
+        margin-top: 0;
+    }
+    .options label {
+        display: block;
+        margin-bottom: 5px;
+        cursor: pointer;
+    }
+    .result {
+        margin-top: 8px;
+        font-weight: bold;
+    }
+    .ok {
+        color: #4ade80;
+    }
+    .bad {
+        color: #fb7185;
+    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 6px;
+        background: #2563eb;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px;
+    }
+    button:hover {
+        background: #1e4fc9;
+    }
+    #score {
+        font-size: 18px;
+        font-weight: bold;
+        color: #facc15;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+<h1>Quiz Completo - Criptografía (Módulo 8)</h1>
+<h2>Basado en la teoría oficial del módulo</h2>
+
+<form id="quizForm">
+
+<!-- ============================
+     SECCIÓN 1: CONFIDENCIALIDAD
+     ============================ -->
+
+<h2>8.1 Confidencialidad</h2>
+
+<!-- 1 -->
+<div class="question">
+<h3>1. ¿Qué es la confidencialidad de los datos?</h3>
+<div class="options">
+<label><input type="radio" name="q1"> Que los datos estén siempre disponibles.</label>
+<label><input type="radio" name="q1" data-correct="true"> Que solo usuarios autorizados puedan acceder a la información.</label>
+<label><input type="radio" name="q1"> Que los datos ocupen poco espacio.</label>
+<label><input type="radio" name="q1"> Que los datos puedan compartirse libremente.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 2 -->
+<div class="question">
+<h3>2. ¿Qué caracteriza al cifrado simétrico?</h3>
+<div class="options">
+<label><input type="radio" name="q2"> Usa claves públicas y privadas.</label>
+<label><input type="radio" name="q2"> No usa claves.</label>
+<label><input type="radio" name="q2" data-correct="true"> Usa la misma clave para cifrar y descifrar.</label>
+<label><input type="radio" name="q2"> Solo sirve para firmas digitales.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 3 -->
+<div class="question">
+<h3>3. ¿Qué caracteriza al cifrado asimétrico?</h3>
+<div class="options">
+<label><input type="radio" name="q3"> Usa una sola clave compartida.</label>
+<label><input type="radio" name="q3" data-correct="true"> Usa una clave pública y una clave privada.</label>
+<label><input type="radio" name="q3"> Solo cifra imágenes.</label>
+<label><input type="radio" name="q3"> Es más rápido que el simétrico.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 4 -->
+<div class="question">
+<h3>4. ¿Qué es un cifrado por bloques?</h3>
+<div class="options">
+<label><input type="radio" name="q4"> Cifra bit a bit.</label>
+<label><input type="radio" name="q4"> No usa claves.</label>
+<label><input type="radio" name="q4" data-correct="true"> Cifra datos en bloques de tamaño fijo.</label>
+<label><input type="radio" name="q4"> Solo sirve para audio.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 5 -->
+<div class="question">
+<h3>5. ¿Qué es un cifrado de flujo?</h3>
+<div class="options">
+<label><input type="radio" name="q5" data-correct="true"> Cifra bit a bit o byte a byte continuamente.</label>
+<label><input type="radio" name="q5"> Cifra en bloques grandes.</label>
+<label><input type="radio" name="q5"> No usa claves.</label>
+<label><input type="radio" name="q5"> Es un algoritmo de hashing.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 6 -->
+<div class="question">
+<h3>6. ¿Qué afirmación sobre DES es correcta?</h3>
+<div class="options">
+<label><input type="radio" name="q6"> Es el algoritmo más seguro actualmente.</label>
+<label><input type="radio" name="q6" data-correct="true"> Es un algoritmo simétrico obsoleto.</label>
+<label><input type="radio" name="q6"> Es un algoritmo asimétrico.</label>
+<label><input type="radio" name="q6"> No utiliza claves.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 7 -->
+<div class="question">
+<h3>7. ¿Qué es 3DES?</h3>
+<div class="options">
+<label><input type="radio" name="q7"> Un algoritmo sin clave.</label>
+<label><input type="radio" name="q7"> Un algoritmo de hashing.</label>
+<label><input type="radio" name="q7" data-correct="true"> Una versión de DES que aplica el algoritmo tres veces.</label>
+<label><input type="radio" name="q7"> Un protocolo de red.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 8 -->
+<div class="question">
+<h3>8. ¿Qué es AES?</h3>
+<div class="options">
+<label><input type="radio" name="q8"> Un algoritmo de firma digital.</label>
+<label><input type="radio" name="q8" data-correct="true"> Un algoritmo simétrico moderno recomendado.</label>
+<label><input type="radio" name="q8"> Un protocolo de correo.</label>
+<label><input type="radio" name="q8"> Un método de esteganografía.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 9 -->
+<div class="question">
+<h3>9. ¿Qué es SEAL?</h3>
+<div class="options">
+<label><input type="radio" name="q9"> Un algoritmo de hashing.</label>
+<label><input type="radio" name="q9"> Un protocolo VPN.</label>
+<label><input type="radio" name="q9" data-correct="true"> Un cifrado simétrico optimizado para software.</label>
+<label><input type="radio" name="q9"> Un certificado digital.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 10 -->
+<div class="question">
+<h3>10. ¿Qué son los algoritmos RC?</h3>
+<div class="options">
+<label><input type="radio" name="q10"> Un tipo de certificado.</label>
+<label><input type="radio" name="q10" data-correct="true"> Una familia de cifrados simétricos como RC4.</label>
+<label><input type="radio" name="q10"> Un protocolo de correo.</label>
+<label><input type="radio" name="q10"> Un método de salting.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 11 -->
+<div class="question">
+<h3>11. ¿Para qué se usa IKE?</h3>
+<div class="options">
+<label><input type="radio" name="q11"> Para firmar código.</label>
+<label><input type="radio" name="q11" data-correct="true"> Para negociar claves en IPsec.</label>
+<label><input type="radio" name="q11"> Para comprimir tráfico.</label>
+<label><input type="radio" name="q11"> Para generar hashes.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 12 -->
+<div class="question">
+<h3>12. ¿Qué hace SSL/TLS?</h3>
+<div class="options">
+<label><input type="radio" name="q12"> Gestiona usuarios del sistema.</label>
+<label><input type="radio" name="q12"> Genera claves simétricas.</label>
+<label><input type="radio" name="q12" data-correct="true"> Cifra comunicaciones como HTTPS.</label>
+<label><input type="radio" name="q12"> Es un algoritmo de hashing.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 13 -->
+<div class="question">
+<h3>13. ¿Para qué sirve SSH?</h3>
+<div class="options">
+<label><input type="radio" name="q13"> Para diseñar páginas web.</label>
+<label><input type="radio" name="q13" data-correct="true"> Para acceso remoto seguro.</label>
+<label><input type="radio" name="q13"> Para crear certificados raíz.</label>
+<label><input type="radio" name="q13"> Para ocultar datos en imágenes.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 14 -->
+<div class="question">
+<h3>14. ¿Qué es PGP?</h3>
+<div class="options">
+<label><input type="radio" name="q14"> Un algoritmo de hash.</label>
+<label><input type="radio" name="q14"> Un protocolo de enrutamiento.</label>
+<label><input type="radio" name="q14" data-correct="true"> Un sistema de cifrado para correos y archivos.</label>
+<label><input type="radio" name="q14"> Un tipo de tabla arcoiris.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 15 -->
+<div class="question">
+<h3>15. ¿Para qué sirve Diffie-Hellman?</h3>
+<div class="options">
+<label><input type="radio" name="q15"> Para comprimir datos.</label>
+<label><input type="radio" name="q15"> Para generar certificados.</label>
+<label><input type="radio" name="q15" data-correct="true"> Para acordar una clave compartida sin comunicarse previamente.</label>
+<label><input type="radio" name="q15"> Para crear tablas arcoiris.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- ============================
+     SECCIÓN 2: OCULTACIÓN DE DATOS
+     ============================ -->
+
+<h2>8.2 Ocultación de Datos</h2>
+
+<!-- 16 -->
+<div class="question">
+<h3>16. ¿Qué es el enmascaramiento de datos?</h3>
+<div class="options">
+<label><input type="radio" name="q16"> Un método de cifrado asimétrico.</label>
+<label><input type="radio" name="q16" data-correct="true"> Reemplazar datos sensibles por versiones no sensibles.</label>
+<label><input type="radio" name="q16"> Un algoritmo de hashing.</label>
+<label><input type="radio" name="q16"> Un protocolo de red.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 17 -->
+<div class="question">
+<h3>17. ¿Qué es la esteganografía?</h3>
+<div class="options">
+<label><input type="radio" name="q17"> Un algoritmo de cifrado simétrico.</label>
+<label><input type="radio" name="q17"> Un método de compresión.</label>
+<label><input type="radio" name="q17" data-correct="true"> Ocultar datos dentro de otro archivo.</label>
+<label><input type="radio" name="q17"> Un certificado digital.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 18 -->
+<div class="question">
+<h3>18. ¿Qué es el estegotexto?</h3>
+<div class="options">
+<label><input type="radio" name="q18"> El mensaje original sin ocultar.</label>
+<label><input type="radio" name="q18" data-correct="true"> El archivo resultante que contiene datos ocultos.</label>
+<label><input type="radio" name="q18"> La clave pública usada para ocultar datos.</label>
+<label><input type="radio" name="q18"> Un algoritmo de hashing.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- ============================
+     SECCIÓN 3: HASHING E INTEGRIDAD
+     ============================ -->
+
+<h2>8.3 / 8.4 Hashing, Integridad y Autenticidad</h2>
+
+<!-- 19 -->
+<div class="question">
+<h3>19. ¿Qué garantiza la integridad de los datos?</h3>
+<div class="options">
+<label><input type="radio" name="q19"> Que los datos estén cifrados.</label>
+<label><input type="radio" name="q19"> Que los datos sean anónimos.</label>
+<label><input type="radio" name="q19" data-correct="true"> Que los datos no han sido modificados.</label>
+<label><input type="radio" name="q19"> Que los datos se puedan compartir.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 20 -->
+<div class="question">
+<h3>20. ¿Qué es un hash criptográfico?</h3>
+<div class="options">
+<label><input type="radio" name="q20"> Un cifrado simétrico.</label>
+<label><input type="radio" name="q20" data-correct="true"> Una función que genera un valor único e irreversible.</label>
+<label><input type="radio" name="q20"> Un certificado digital.</label>
+<label><input type="radio" name="q20"> Un protocolo de red.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 21 -->
+<div class="question">
+<h3>21. ¿Qué añade HMAC a un hash?</h3>
+<div class="options">
+<label><input type="radio" name="q21"> Un certificado digital.</label>
+<label><input type="radio" name="q21"> Un cifrado por bloques.</label>
+<label><input type="radio" name="q21" data-correct="true"> Una clave secreta para verificar autenticidad.</label>
+<label><input type="radio" name="q21"> Un canal de voz.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 22 -->
+<div class="question">
+<h3>22. ¿Qué es el salting?</h3>
+<div class="options">
+<label><input type="radio" name="q22"> Un método para comprimir datos.</label>
+<label><input type="radio" name="q22" data-correct="true"> Añadir datos aleatorios antes de aplicar un hash.</label>
+<label><input type="radio" name="q22"> Un algoritmo de cifrado.</label>
+<label><input type="radio" name="q22"> Un protocolo de autenticación.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 23 -->
+<div class="question">
+<h3>23. ¿Qué son las tablas arcoiris?</h3>
+<div class="options">
+<label><input type="radio" name="q23"> Un método de cifrado.</label>
+<label><input type="radio" name="q23"> Un tipo de certificado.</label>
+<label><input type="radio" name="q23" data-correct="true"> Tablas optimizadas para romper hashes.</label>
+<label><input type="radio" name="q23"> Un protocolo de VPN.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- ============================
+     SECCIÓN 4: FIRMAS DIGITALES Y PKI
+     ============================ -->
+
+<h2>8.5 / 8.6 PKI y Firmas Digitales</h2>
+
+<!-- 24 -->
+<div class="question">
+<h3>24. ¿Qué es una firma digital?</h3>
+<div class="options">
+<label><input type="radio" name="q24"> Un método de compresión.</label>
+<label><input type="radio" name="q24"> Un cifrado simétrico.</label>
+<label><input type="radio" name="q24" data-correct="true"> Un mecanismo para verificar autenticidad e integridad.</label>
+<label><input type="radio" name="q24"> Un protocolo de red.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 25 -->
+<div class="question">
+<h3>25. ¿Qué es un certificado digital?</h3>
+<div class="options">
+<label><input type="radio" name="q25"> Un algoritmo de hashing.</label>
+<label><input type="radio" name="q25"> Un protocolo de VPN.</label>
+<label><input type="radio" name="q25" data-correct="true"> Un documento que vincula una clave pública con una identidad.</label>
+<label><input type="radio" name="q25"> Un método de esteganografía.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<div class="question">
+<h3>26. ¿Qué es RSA?</h3>
+<div class="options">
+<label><input type="radio" name="q26"> Un algoritmo simétrico de flujo.</label>
+<label><input type="radio" name="q26"> Un método de esteganografía.</label>
+<label><input type="radio" name="q26"> Un protocolo de túneles VPN.</label>
+<label><input type="radio" name="q26" data-correct="true"> Un algoritmo asimétrico basado en la factorización de números grandes.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 27 -->
+<div class="question">
+<h3>27. ¿Qué es DSA?</h3>
+<div class="options">
+<label><input type="radio" name="q27"> Un algoritmo de cifrado simétrico.</label>
+<label><input type="radio" name="q27" data-correct="true"> Un algoritmo de firma digital basado en ElGamal.</label>
+<label><input type="radio" name="q27"> Un protocolo de correo seguro.</label>
+<label><input type="radio" name="q27"> Un método de salting.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 28 -->
+<div class="question">
+<h3>28. ¿Qué es ElGamal?</h3>
+<div class="options">
+<label><input type="radio" name="q28"> Un algoritmo de compresión.</label>
+<label><input type="radio" name="q28"> Un cifrado simétrico moderno.</label>
+<label><input type="radio" name="q28" data-correct="true"> Un algoritmo asimétrico basado en Diffie-Hellman.</label>
+<label><input type="radio" name="q28"> Un protocolo de autenticación.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 29 -->
+<div class="question">
+<h3>29. ¿Qué aportan las técnicas de curvas elípticas (ECC)?</h3>
+<div class="options">
+<label><input type="radio" name="q29"> Reducen el tamaño de los certificados.</label>
+<label><input type="radio" name="q29" data-correct="true"> Permiten algoritmos más seguros con claves más pequeñas.</label>
+<label><input type="radio" name="q29"> Eliminan la necesidad de claves privadas.</label>
+<label><input type="radio" name="q29"> Solo sirven para esteganografía.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 30 -->
+<div class="question">
+<h3>30. ¿Qué garantiza la autenticación en criptografía asimétrica?</h3>
+<div class="options">
+<label><input type="radio" name="q30"> Que los datos estén cifrados.</label>
+<label><input type="radio" name="q30" data-correct="true"> Que el mensaje fue generado con la clave privada del remitente.</label>
+<label><input type="radio" name="q30"> Que el mensaje no ocupa espacio.</label>
+<label><input type="radio" name="q30"> Que el mensaje se envió por VPN.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 31 -->
+<div class="question">
+<h3>31. ¿Qué garantiza el no repudio?</h3>
+<div class="options">
+<label><input type="radio" name="q31"> Que los datos estén comprimidos.</label>
+<label><input type="radio" name="q31"> Que los datos estén enmascarados.</label>
+<label><input type="radio" name="q31" data-correct="true"> Que el remitente no pueda negar haber enviado un mensaje.</label>
+<label><input type="radio" name="q31"> Que el mensaje sea anónimo.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 32 -->
+<div class="question">
+<h3>32. ¿Qué es una PKI?</h3>
+<div class="options">
+<label><input type="radio" name="q32"> Un algoritmo de hashing.</label>
+<label><input type="radio" name="q32"> Un protocolo de VPN.</label>
+<label><input type="radio" name="q32" data-correct="true"> Una infraestructura para gestionar certificados y claves públicas.</label>
+<label><input type="radio" name="q32"> Un método de esteganografía.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 33 -->
+<div class="question">
+<h3>33. ¿Qué es una CA (Autoridad de Certificación)?</h3>
+<div class="options">
+<label><input type="radio" name="q33"> Un servidor de VPN.</label>
+<label><input type="radio" name="q33"> Un algoritmo de cifrado.</label>
+<label><input type="radio" name="q33" data-correct="true"> Una entidad que emite y valida certificados digitales.</label>
+<label><input type="radio" name="q33"> Un sistema de esteganografía.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 34 -->
+<div class="question">
+<h3>34. ¿Qué implica la certificación cruzada entre CAs?</h3>
+<div class="options">
+<label><input type="radio" name="q34"> Que las CAs dejan de emitir certificados.</label>
+<label><input type="radio" name="q34" data-correct="true"> Que dos CAs confían mutuamente en sus certificados.</label>
+<label><input type="radio" name="q34"> Que se eliminan las claves públicas.</label>
+<label><input type="radio" name="q34"> Que se usa hashing en lugar de certificados.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 35 -->
+<div class="question">
+<h3>35. ¿Qué es una CRL?</h3>
+<div class="options">
+<label><input type="radio" name="q35"> Una lista de usuarios conectados.</label>
+<label><input type="radio" name="q35"> Un algoritmo de cifrado.</label>
+<label><input type="radio" name="q35" data-correct="true"> Una lista de certificados revocados.</label>
+<label><input type="radio" name="q35"> Un método de esteganografía.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 36 -->
+<div class="question">
+<h3>36. ¿Para qué sirve OCSP?</h3>
+<div class="options">
+<label><input type="radio" name="q36"> Para generar claves simétricas.</label>
+<label><input type="radio" name="q36"> Para cifrar tráfico HTTPS.</label>
+<label><input type="radio" name="q36" data-correct="true"> Para consultar en tiempo real el estado de un certificado.</label>
+<label><input type="radio" name="q36"> Para crear tablas arcoiris.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- ============================
+     SECCIÓN 5: APLICACIONES
+     ============================ -->
+
+<h2>8.7 Aplicaciones e Impacto</h2>
+
+<!-- 37 -->
+<div class="question">
+<h3>37. ¿Qué impacto tiene la criptografía en el monitoreo de red?</h3>
+<div class="options">
+<label><input type="radio" name="q37"> Facilita ver todo el tráfico sin restricciones.</label>
+<label><input type="radio" name="q37" data-correct="true"> Dificulta el análisis porque los paquetes están cifrados.</label>
+<label><input type="radio" name="q37"> Elimina la necesidad de firewalls.</label>
+<label><input type="radio" name="q37"> Permite descifrar tráfico automáticamente.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- 38 -->
+<div class="question">
+<h3>38. ¿Para qué usan las empresas la PKI?</h3>
+<div class="options">
+<label><input type="radio" name="q38"> Para comprimir archivos.</label>
+<label><input type="radio" name="q38"> Para ocultar datos en imágenes.</label>
+<label><input type="radio" name="q38" data-correct="true"> Para autenticar usuarios, dispositivos y servicios.</label>
+<label><input type="radio" name="q38"> Para generar hashes de contraseñas.</label>
+</div>
+<div class="result"></div>
+</div>
+
+<!-- ============================
+     BOTONES FINALES
+     ============================ -->
+
+<div style="text-align:center; margin-top:30px;">
+    <button type="button" onclick="corregir()">Corregir respuestas</button>
+    <button type="button" onclick="reiniciar()">Reiniciar</button>
+    <div id="score"></div>
+</div>
+
+</form>
+</div>
+
+<script>
+function corregir() {
+    const questions = document.querySelectorAll('.question');
+    let aciertos = 0;
+
+    questions.forEach(q => {
+        const radios = q.querySelectorAll('input[type="radio"]');
+        const result = q.querySelector('.result');
+        let marcada = [...radios].find(r => r.checked);
+
+        if (!marcada) {
+            result.textContent = "Sin responder";
+            result.className = "result bad";
+            return;
+        }
+
+        if (marcada.dataset.correct === "true") {
+            aciertos++;
+            result.textContent = "Correcto ✔";
+            result.className = "result ok";
+        } else {
+            const correcta = [...radios].find(r => r.dataset.correct === "true");
+            result.textContent = "Incorrecto ✘ → " + correcta.parentElement.textContent.trim();
+            result.className = "result bad";
+        }
+    });
+
+    document.getElementById("score").textContent =
+        "Aciertos: " + aciertos + " de " + questions.length;
+}
+
+function reiniciar() {
+    document.getElementById("quizForm").reset();
+    document.getElementById("score").textContent = "";
+    document.querySelectorAll('.result').forEach(r => r.textContent = "");
+}
+</script>
+
+</body>
+</html>
